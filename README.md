@@ -29,7 +29,8 @@ The ERD was generated in MySQL. Preliminary data cleaning and an EDA were also p
 # Power BI
 The Power BI Dashboard consists of a Sales Overview, USA Target Market Analysis, and a Country Target Market Analysis page with drill through features to explore Top 5 Brands, Top 3 Categories, and Top 20 Products of the selected age group.
 
-The Model View is shown below.
+The Model View of the table data is shown below.
+
 <img width="1796" height="958" alt="image" src="https://github.com/user-attachments/assets/04f9bf05-5696-407c-9f9f-74b13f7de941"/>
 
 ### Notes: 
