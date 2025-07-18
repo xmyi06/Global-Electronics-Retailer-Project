@@ -34,6 +34,7 @@ Audience: Chief Revenue Officer (CRO), Chief Operating Officer (COO), Head of Sa
 Recent data reveals a drastic decline in GER’s sales across all eight markets, likely due to a global external factor such as the COVID-19 pandemic. This downturn has significantly reduced revenue and market stability.
 
 ### Key Indicators:
+- A negative % YoY change was first observed in Q2 2020, around when the US lockdown initiated.
 - Total revenue fell from $18.3M in 2019 to $9.3M in 2020 (-49% YoY).
 - Cumulative losses reached $9M by 2021, with no rebound thus far.
 - The greatest losses were observed in Utah, Iowa, Oregon, Wyoming, and South Carolina.
