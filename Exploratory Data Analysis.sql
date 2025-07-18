@@ -33,8 +33,8 @@ GROUP BY currency
 ORDER BY 2 DESC;
 
 -- Calculates quarterly revenue for the US where applicable (Q1-Q4 for years 2016-2021). Created a temporary table for easier data manipulation.
-CREATE TEMPORARY TABLE temp_usa_qt AS
-WITH USA_Monthly_Revenue AS
+CREATE TEMPORARY TABLE temp_us_qt_revenue AS
+WITH US_Monthly_Revenue AS
 (
 SELECT 
 	EXTRACT(YEAR FROM order_date) AS year,
@@ -50,18 +50,18 @@ SELECT
 	year,
     CONCAT('Q', CEILING(month/3.0)) AS quarter,
     SUM(total_revenue) AS quarterly_revenue
-FROM USA_Monthly_Revenue
+FROM US_Monthly_Revenue
 GROUP BY year, quarter
 ORDER BY year, quarter;
 
-SELECT * FROM temp_usa_qt;
+SELECT * FROM temp_us_qt_revenue;
 
 SELECT
 	year,
     quarterly_revenue,
     LAG(quarterly_revenue, 4) OVER(ORDER BY year, quarter) AS prev_year_qtr_revenue,
     (quarterly_revenue - LAG(quarterly_revenue, 4) OVER(ORDER BY year, quarter)) / NULLIF(LAG(quarterly_revenue, 4) OVER(ORDER BY year, quarter),0) AS yoy_quaterly_revenue_change
- FROM temp_usa_qt;
+ FROM temp_us_qt_revenue;
 
 -- Calculates % YoY change over quarters for the US.
 WITH Qtr_Comparison AS
@@ -72,7 +72,7 @@ SELECT
     quarterly_revenue,
     LAG(quarterly_revenue, 4) OVER(ORDER BY year, quarter) AS prev_year_qtr_revenue,
     ((quarterly_revenue - LAG(quarterly_revenue, 4) OVER (ORDER BY year, quarter)) / NULLIF(LAG(quarterly_revenue, 4) OVER(ORDER BY year, quarter),0)) AS yoy_qtr_change
-FROM temp_usa_qt
+FROM temp_us_qt_revenue
 )
 SELECT
 	year,
@@ -83,7 +83,7 @@ FROM Qtr_Comparison
 WHERE prev_year_qtr_revenue IS NOT NULL;
 
 -- Used previous logic to calculate quarterly orders for the US. 
-CREATE TEMPORARY TABLE temp_qt AS
+CREATE TEMPORARY TABLE temp_us_qt_orders AS
 WITH Monthly_Orders AS
 (
 SELECT 
@@ -104,7 +104,7 @@ FROM Monthly_Orders
 GROUP BY year, quarter
 ORDER BY year, quarter;
 
-SELECT * FROM temp_qt;
+SELECT * FROM temp_us_qt_orders;
 
 SELECT	
 	year,
@@ -146,5 +146,5 @@ WHERE c.country = 'United States'
 GROUP BY year, month
 )
 SELECT *, total_revenue / total_orders AS aov
-FROM AOV_Cte
+FROM AOV_US
 ORDER BY year, month;
