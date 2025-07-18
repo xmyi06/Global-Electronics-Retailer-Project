@@ -18,17 +18,26 @@ The ERD (Entity Relationship Diagram) below visualizes the relationship between 
 
 ![Picture of the Global Electronics Retailer ERD](<Global Electronics Retailer Project - ERD.png>)
 
-Sales Table - Fact Table, Primary Key: order_num. Contains quantitative transactional data with cust_key, store_key, and prod_key as foreign keys.
-Stores Table - Dimension Table, Primary Key: store_key. Contains information about store location, size (square feet), and open date. 
-Customers Table - Dimension Table, Primary Key: cust_key. Contains information about customer demographics such as gender, location, and birthday.
-Products Table - Dimension Table, Primary Key: prod_key. Contains quantitative data about products such as brand, category, subcategory, and measures such as unit price and unit cost.
+### Tables
+- Sales - Fact Table, Primary Key: order_num. Contains quantitative transactional data with cust_key, store_key, and prod_key as foreign keys.
+- Stores - Dimension Table, Primary Key: store_key. Contains information about store location, size (square feet), and open date. 
+- Customers - Dimension Table, Primary Key: cust_key. Contains information about customer demographics such as gender, location, and birthday.
+- Products - Dimension Table, Primary Key: prod_key. Contains quantitative data about products such as brand, category, subcategory, and measures such as unit price and unit cost.
 
 The ERD was generated in MySQL. Preliminary data cleaning and an EDA were also performed in MySQL before moving on to data visualization in Power BI. View these files in the repository.
 
+# Power BI
+The Power BI Dashboard consists of a Sales Overview, USA Target Market Analysis, and a Country Target Market Analysis page with drill through features to explore Top 5 Brands, Top 3 Categories, and Top 20 Products of the selected age group.
+
+The Model View is shown below.
+<img width="1796" height="958" alt="image" src="https://github.com/user-attachments/assets/04f9bf05-5696-407c-9f9f-74b13f7de941"/>
+
+### Notes: 
+- The "Top 20 Products" page of the dashboard, when properly presented, shows columns Product Name, Total Revenue, and Unit Price by descending order of revenue.
+- Regional Statistics include Washington, DC as a state.
+
 # Executive Summary
 Audience: Chief Revenue Officer (CRO), Chief Operating Officer (COO), Head of Sales
-
-*Note: On the Power BI dashboard, Regional Statistics include Washington, DC as a state.*
 
 ## Problem Statement
 Recent data reveals a drastic decline in GER’s sales across all eight markets, likely due to a global external factor such as the COVID-19 pandemic. This downturn has significantly reduced revenue and market stability.
@@ -52,4 +61,3 @@ Launch a 20% discount for the XD233, X2330, ED182, AND 31600 across online chann
 - Overall ARPU is $1.79K and UPT is 7.24. For ages 65-90, ARPU is $2.05K and UPT is 7.76, signaling that high-cost orders and bulk purchasing is a pattern for all demographics.
 
 *Q4 2020 is used to aid decision-making because it is the most recent full quarter.
-
